@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Workday</title>
+	<style type="text/css">
+
+	body, html {
+		margin: 0;
+		height: 100%;
+		overflow: hidden;
+		}
+
+	#container {
+		position: fixed;
+		width: 100vw;
+		height: 100px;
+		left: 0;
+		right: 0;
+		margin: auto;	
+		top: 100px;	
+		visibility: hidden;
+		}
+
+	#circle {
+		left: 0;
+		right: 0;
+	  	width: 32%;
+/*		background: red;
+*/		-moz-border-radius: 50px;
+		-webkit-border-radius: 50px;
+		border-radius: 50px;
+	  	float:left;
+	  	margin:10px;
+
+		}
+
+	#enter {
+		position: fixed;
+		width: 100vw;
+		height: 100px;
+		left: 0;
+		right: 0;
+		margin: auto;	
+		top: 100px;	
+		visibility: visible;
+		text-align: center;
+		font-family: 'Helvetica Mono', sans-serif;
+		font-size: 35px;
+
+	}
+
+	.count1, .count2, .count3, 	.count4, .count5, .count6, .count7, .count8, .count9, 	.count10, .count11, .count12, .count13, .count14, .count15, #hej, #hej2, #hej3, #hej4, #hej5, #hej6, #hej7, #hej8, #hej9, #hej10, #hej11, #hej12, #hej13, #hej14, #hej15 {
+	  	line-height: 100px;
+/*	  	color:white;
+*/		/*  margin-left:30px;*/  
+		font-size:100px;
+		font-family: 'Helvetica Mono', sans-serif;
+	  	text-align: center;
+	  	z-index: -5;
+	  	mix-blend-mode: multiply;
+	  	color: grey;
+		}
+
+
+	.clock {
+		position: fixed;
+		top: 10px;
+		left: 10px;
+		font-size: 35px;
+		font-family: 'Helvetica Mono', sans-serif;
+		z-index: 3;
+		font-variant-numeric: tabular-nums;
+		}
+
+	.bg {
+	  	background-image: url("img.jpg");
+	  	z-index: -1;
+	  	background-size: 100%;
+	  	width: 100%;
+	  	height: 100%;
+	  	position: fixed;
+	  	left: 0;
+	  	right: 0;
+	  	bottom: 0;
+	  	top: 0;
+	  	mix-blend-mode: multiply;
+	  	background-position: center;
+	  	background-repeat: no-repeat;
+	  	background-size: cover;
+	  	filter: blur(20px);
+	}
+
+	#progress-bar {
+		width: 100vw;
+		margin: 0px;
+		bottom: -50px;
+		position: fixed;
+
+
+		}
+		
+	.progress {
+		height: 200px;
+/*		background-color: green;
+*/		width: 100vw;
+		bottom: 0px;
+		position: fixed;
+
+		}
+		
+	.progress-info {
+		color: #000;
+		font-family: 'Helvetica Mono', sans-serif;
+		text-align: center;
+		font-size: 80px;
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 100px;
+		}
+#info-container {
+	visibility: hidden;
+}
+
+	.button {
+		position: fixed;
+		width: 100px;
+		height: 100px;
+		left: 0;
+		right: 0;
+		margin: auto;
+		top: 150px;
+		font-size: 35px;
+		font-family: 'Helvetica Mono', sans-serif;
+		border-radius: 50px;
+		border: 2px solid blue;
+		background-color: transparent;
+		 /* width: 100%;*/
+	  }
+
+	  .button:active,
+.button:focus,
+.button.active
+.button2:active,
+.button2:focus,
+.button2.active {
+  background-image: none;
+  outline: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+	@font-face {
+  		font-family: 'Helvetica Mono';
+  		src:  url('assets/HelveticaMonospacedPro-Rg.woff2') format('woff2');
+		}
+
+
+	</style>
+	</head>
+	<body>
+		<div class="bg"></div>
+		<div id="progress-bar">
+  		<progress class="progress progress-striped progress-success" value="1" max="100">
+    	<div class="progress">
+      	<span class="progress-bar"</span>
+    	</div>
+ 		</progress>
+ 		<div class="progress-info"></div>
+		</div>
+		<div id="enter">Log In<button class="button" onclick="enter()"></button></div>
+
+		<div id="down"></div>
+	    <div class="clock">Until Next Day: <span id="until-tomorrow" style="font-family:Helvetica Mono">01</span></div>
+	    <div id="container">
+		<div id="circle"><div id="hej"><span value="" class="count1">200</span></div></div>
+		<div id="circle"><div id="hej2"><span class="count2">10000</span></div></div>
+		<div id="circle"><div id="hej3"><span class="count3">853</span></div></div>
+
+		<div id="circle"><div id="hej4"><span value="" class="count4">200</span></div></div>
+		<div id="circle"><div id="hej5"><span class="count5">10000</span></div></div>
+		<div id="circle"><div id="hej6"><span class="count6">853</span></div></div>
+
+		<div id="circle"><div id="hej7"><span value="" class="count7">200</span></div></div>
+		<div id="circle"><div id="hej8"><span class="count1">10000</span></div></div>
+		<div id="circle"><div id="hej9"><span class="count2">853</span></div></div>
+
+		<div id="circle"><div id="hej10"><span value="" class="count3">200</span></div></div>
+		<div id="circle"><div id="hej2"><span class="count1">10000</span></div></div>
+		<div id="circle"><div id="hej12"><span class="count3">853</span></div></div>
+
+		<div id="circle"><div id="hej13"><span value="" class="count2">200</span></div></div>
+		<div id="circle"><div id="hej14"><span class="count2">10000</span></div></div>
+		<div id="circle"><div id="hej2"><span class="count3">853</span></div></div>
+		<!-- <div id="shiva"><span class="count">154</span></div>
+		<div id="shiva"><span class="count">10</span></div>
+		<div id="shiva"><span class="count">87</span></div> -->
+		</div>
+		</div>
+
+<!-- AUDIO !!!!!!! -->
+		<audio id="audio" controls style="display:none">
+		  	<source src="radio_5.mp3" type="audio/mpeg"> 
+			</audio>
+<!-- AUDIO !!!!!!! -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+// START AUDIO //////////////////////////////////////////////////////////
+
+// document.addEventListener('keydown', function(e) {
+//   if (e.keyCode == 13) {
+//     document.getElementById('audio').play();
+//   }
+// });
+
+// UNTIL TOMORROW //////////////////////////////////////////////////////////
+
+var intervalID = setInterval(tomorrow, 2000);
+var count = 1;
+
+function tomorrow() {
+  document.getElementById("until-tomorrow").innerHTML = count;
+    count ++; 
+    if(count < 10)
+    { document.getElementById("until-tomorrow").innerHTML = "0" + count;  }  
+};
+
+function bar(){
+
+var progressBarContainer = $('#progress-bar');
+var progressBar = {
+    chain: [],
+    progress: progressBarContainer.children('progress'),
+    progressBar: progressBarContainer.find('.progress-bar'),
+    progressInfo: progressBarContainer.children('.progress-info'),
+    set: function(value, info, noPush) {
+        if(!noPush) {
+            this.chain.push(value);
+        }
+        if(this.chain[0] == value) {
+            this.go(value, info);
+        }
+        else {
+            var self = this;
+            setTimeout(function() {
+                self.set(value, info, true)
+            }, 4000);
+        }
+    },
+    go: function(value, info) {
+        this.progressInfo.text(info);
+        var self = this;
+        var interval = setInterval(function() {
+            var curr = self.progress.attr('value');
+            if(curr >= value) {
+                clearInterval(interval);
+                self.progress.attr('value', value);
+                self.progressBar.css('width', value + '%');
+                self.chain.shift()
+            }
+            else {
+                self.progress.attr('value', ++curr);
+                self.progressBar.css('width', curr + '%');
+            }
+        }, 10)
+    }
+};
+
+progressBar.set(5, '$1/hour');
+progressBar.set(10, '$2/hour');
+progressBar.set(24, '$5/hour');
+progressBar.set(50, '$8/hour');
+progressBar.set(22, '$4/hour');
+progressBar.set(90, '$12/hour');
+progressBar.set(30, '$5/hour');
+progressBar.set(42, '$4/hour');
+progressBar.set(55, '$6/hour');
+progressBar.set(96, '$14/hour');
+progressBar.set(25, '$2/hour');
+progressBar.set(1, '$0/hour');
+progressBar.set(3, '$1/hour');
+progressBar.set(9, '$2/hour');
+progressBar.set(18, '$5/hour');
+progressBar.set(28, '$7/hour');
+progressBar.set(99, '$15/hour');
+progressBar.set(7, '$1/hour');
+
+}
+
+// COUNTERS //////////////////////////////////////////////////////////
+
+document.addEventListener("click", restart);
+
+function restart() {
+	counter();
+	counter2();
+}
+
+function enter() {
+	document.getElementById('enter').style.visibility = "hidden";
+	bar();
+	showDiv();
+}
+
+function showDiv() {
+   document.getElementById('container').style.visibility = "visible";
+   document.getElementById('container').style.visibility = "visible";
+}
+
+function counter() {
+
+$('.count1').each(function() {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 1000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+            console.log(now);
+			if (now === 200) {
+			document.getElementById("hej").innerHTML = "Play";
+			document.getElementById("hej").style.color ="#fc7b03";
+			document.getElementById('audio').play();
+					$('.count2').each(function () {
+					    $(this).prop('Counter',0).animate({
+					        Counter: $(this).text()
+					    }, {
+					        duration: 42000,
+					        easing: 'swing',
+					        step: function (now) {
+					            $(this).text(Math.ceil(now));
+					            if (now === 10000) {
+								document.getElementById('audio').pause();
+								document.getElementById("hej").innerHTML = "Pause";
+								document.getElementById("hej").style.color ="#fc7b03";
+								document.getElementById("hej2").innerHTML = "Pause";
+								document.getElementById("hej2").style.color ="#fc7b03";
+
+								$('.count3').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 5000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+            if (now === 853) {
+			document.getElementById('audio').play();
+			document.getElementById("hej").innerHTML = "Play";
+			document.getElementById("hej8").innerHTML = "Play";
+			document.getElementById("hej8").style.color ="#fc7b03";
+			document.getElementById("hej2").style.color ="#fc7b03";
+			document.getElementById("hej9").innerHTML = "Play";
+			document.getElementById("hej9").style.color ="#fc7b03";
+
+$('.count4').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 40000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+
+            if (now === 200) {
+			document.getElementById('audio').play();
+			document.getElementById("hej6").innerHTML = "Play";
+			document.getElementById("hej6").style.color ="#fc7b03";
+			document.getElementById("hej14").innerHTML = "Play";
+			document.getElementById("hej14").style.color ="#fc7b03";
+			document.getElementById("hej13").innerHTML = "Play";
+			document.getElementById("hej13").style.color ="#fc7b03";
+
+
+
+
+
+
+}
+
+
+        }
+    });
+});
+
+
+    		}
+        }
+    });
+});
+
+
+					    		}
+					        }
+					    });
+					});
+
+
+
+			
+    		}
+        }
+
+    });
+
+});
+
+
+};
+
+
+function counter2() {
+
+$('.count1').each(function() {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 1000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+            console.log(now);
+			if (now === 200) {
+			document.getElementById("hej").innerHTML = "Play";
+			document.getElementById('audio').play();
+					$('.count2').each(function () {
+					    $(this).prop('Counter',0).animate({
+					        Counter: $(this).text()
+					    }, {
+					        duration: 50000,
+					        easing: 'swing',
+					        step: function (now) {
+					            $(this).text(Math.ceil(now));
+					            if (now === 10000) {
+								// document.getElementById('audio').pause();
+								document.getElementById("hej").innerHTML = "Pause";
+								document.getElementById("hej").style.color ="#fc7b03";
+								document.getElementById("hej2").innerHTML = "Pause";
+								document.getElementById("hej2").style.color ="#fc7b03";
+
+								$('.count3').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+            if (now === 853) {
+			document.getElementById('audio').play();
+			document.getElementById("hej").innerHTML = "Play";
+			document.getElementById("hej2").innerHTML = "Play";
+			document.getElementById("hej2").style.color ="#fc7b03";
+			document.getElementById("hej3").innerHTML = "Play";
+			document.getElementById("hej3").style.color ="#fc7b03";
+
+$('.count4').each(function () {
+    $(this).prop('Counter',0).animate({
+        Counter: $(this).text()
+    }, {
+        duration: 4000,
+        easing: 'swing',
+        step: function (now) {
+            $(this).text(Math.ceil(now));
+
+            if (now === 200) {
+			document.getElementById('audio').pause();
+			document.getElementById("hej7").innerHTML = "Test";
+			document.getElementById("hej9").innerHTML = "Test";
+			document.getElementById("hej8").innerHTML = "Test";
+
+
+
+
+
+
+}
+
+
+        }
+    });
+});
+
+
+    		}
+        }
+    });
+});
+
+
+					    		}
+					        }
+					    });
+					});
+
+
+
+			
+    		}
+        }
+
+    });
+
+});
+
+
+};
+
+
+// function reset() {
+// 	// do whatever
+// 	document.getElementById("hej").innerHTML = "200";
+// 	document.getElementById("hej2").innerHTML = "200";
+// }
+
+setInterval(counter1(), 1000);
+setInterval(counter2(), 2000);
+
+
+</script>
+
+
+</body>
+</html>
