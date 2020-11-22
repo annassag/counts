@@ -34,19 +34,23 @@
 
 		}
 
-	#enter {
-		position: fixed;
+	#enter2 {
+/*		position: fixed;
 		width: 100vw;
 		height: 100px;
 		left: 0;
-		right: 0;
+		right: 0;*/
 		margin: auto;	
-		top: 100px;	
+/*		top: 100px;	*/
 		visibility: visible;
 		text-align: center;
 		font-family: 'Helvetica Mono', sans-serif;
 		font-size: 35px;
 
+	}
+
+		#enter {
+		visibility: visible;
 	}
 
 	.count1, .count2, .count3, 	.count4, .count5, .count6, .count7, .count8, .count9, 	.count10, .count11, .count12, .count13, .count14, .count15, #hej, #hej2, #hej3, #hej4, #hej5, #hej6, #hej7, #hej8, #hej9, #hej10, #hej11, #hej12, #hej13, #hej14, #hej15 {
@@ -124,8 +128,8 @@
 
 	.button {
 		position: fixed;
-		width: 100px;
-		height: 100px;
+		width: 200px;
+		height: 200px;
 		left: 0;
 		right: 0;
 		margin: auto;
@@ -163,12 +167,14 @@
 		<div id="progress-bar">
   		<progress class="progress progress-striped progress-success" value="1" max="100">
     	<div class="progress">
-      	<span class="progress-bar"</span>
+      	<span class="progress-bar"></span>
     	</div>
  		</progress>
  		<div class="progress-info"></div>
 		</div>
-		<div id="enter">Log In<button class="button" onclick="enter()"></button></div>
+		<div id="enter">
+		<button class="button" onclick="enter()"><div id="enter2">Log In</div></button>
+		</div>
 
 		<div id="down"></div>
 	    <div class="clock">Until Next Day: <span id="until-tomorrow" style="font-family:Helvetica Mono">01</span></div>
@@ -200,7 +206,7 @@
 
 <!-- AUDIO !!!!!!! -->
 		<audio id="audio" controls style="display:none">
-		  	<source src="radio_11.mp3" type="audio/mpeg"> 
+		  	<source src="radio_10.mp3" type="audio/mpeg"> 
 			</audio>
 <!-- AUDIO !!!!!!! -->
 
@@ -274,9 +280,9 @@ progressBar.set(24, '$5/hour');
 progressBar.set(50, '$8/hour');
 progressBar.set(22, '$4/hour');
 progressBar.set(90, '$12/hour');
-progressBar.set(30, '$6/hour');
-progressBar.set(42, '$7/hour');
-progressBar.set(55, '$8/hour');
+progressBar.set(30, '$5/hour');
+progressBar.set(42, '$4/hour');
+progressBar.set(55, '$6/hour');
 progressBar.set(96, '$14/hour');
 progressBar.set(25, '$2/hour');
 progressBar.set(1, '$0/hour');
@@ -300,6 +306,7 @@ function restart() {
 
 function enter() {
 	document.getElementById('enter').style.visibility = "hidden";
+	document.getElementById('enter2').style.visibility = "hidden";
 	bar();
 	showDiv();
 }
